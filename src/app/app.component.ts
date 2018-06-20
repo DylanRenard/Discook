@@ -7,12 +7,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { AuthentificationPage } from '../pages/authentification/authentification';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = AuthentificationPage;
 
   config = {
     apiKey: "AIzaSyDVUMjRPw-fX2EDvK0CkLIvzDiBQbY9CaU",

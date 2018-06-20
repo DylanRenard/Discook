@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
@@ -19,10 +18,13 @@ import { AngularFireDatabaseModule} from 'angularfire2/database';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
+import { AuthentificationPage } from '../pages/authentification/authentification';
+import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
+    AuthentificationPage,
     HomePage
   ],
   imports: [
@@ -36,6 +38,7 @@ import { DatabaseProvider } from '../providers/database/database';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AuthentificationPage,
     HomePage
   ],
   providers: [
