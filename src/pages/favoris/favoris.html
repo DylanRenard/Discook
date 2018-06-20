@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Favoris</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changePage('parametre')">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let recette of favorisList">
+    <ion-grid>
+      <ion-row *ngIf="favorisList.indexOf(recette)%2 == 0">
+        <ion-col col-6>
+          <ion-card (tap)="onClickRecette(recette)">
+            <img [src]="recette.image | safe:'url'">
+            <p>{{recette.nom}}</p>
+          </ion-card>
+        </ion-col>
+        <ion-col *ngIf="favorisList.indexOf(recette)+1<favorisList.length">
+          <ion-card (tap)="onClickRecette(favorisList[favorisList.indexOf(recette)+1])">
+            <img [src]="favorisList[favorisList.indexOf(recette)+1].image | safe:'url'">
+            <p>{{ favorisList[favorisList.indexOf(recette)+1].nom }}</p>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -25,7 +25,6 @@ ion-icon{
 }
 
 img{
-    width: 30%;
     height: 30%;
     margin: auto;
 }
@@ -37,4 +36,12 @@ img{
 
 .toolbar-title.toolbar-title-md{
     transform: translate(-30px);
+}
+
+ion-card.card.card-md{
+    background-color: transparent;
+}
+
+.card-md p{
+    text-align: center;
 }

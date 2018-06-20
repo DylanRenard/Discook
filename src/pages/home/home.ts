@@ -19,10 +19,9 @@ export class HomePage {
         this.navCtrl.push(`ParametrePage`);
         break;
       case ('favoris'):
-        //this.navCtrl.push(`FavorisPage`);
+        this.navCtrl.push(`FavorisPage`);
         break;
     }
-   
   }
 
   test(){
