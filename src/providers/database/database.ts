@@ -1,3 +1,4 @@
+import { Utilisateur } from './utilisateur';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -5,6 +6,7 @@ import * as firebase from 'firebase';
 
 import { Ingredient, Recette, Etape } from './recette';
 import { RecetteSearch } from './recetteSearch';
+import { resolveDefinition } from '@angular/core/src/view/util';
 
 @Injectable()
 export class DatabaseProvider {
@@ -223,5 +225,61 @@ export class DatabaseProvider {
     });
 
     firebase.database().ref('Recette/' + recette.id).remove();
+  }
+
+  //permet de se connecter
+  //renvoie l'id de l'utilisateur si la connexion a réussi, 'mdp' si le mot de passe n'est pas correct, 'pseudo' si le pseudo est inconnu
+  login(utilisateur:Utilisateur):Promise<string>{
+    let findPseudo:boolean=false;
+    
+    return new Promise<string>( resolve => {
+      firebase.database().ref('Utilisateur').once('value', table => {
+        table.forEach( user => {
+          let userData:Utilisateur = user.val() as Utilisateur;
+          if(!findPseudo && userData.pseudo == utilisateur.pseudo){
+            findPseudo = true;
+            if(userData.mdp == utilisateur.mdp) resolve(user.key);
+            else resolve('mdp');
+          }
+        });
+        resolve('pseudo');
+      });
+    });
+  }
+
+  //permet de s'enregistrer dans la base de données
+  //renvoie l'id de l'utilisateur si l'inscription a réussi, null sinon (pseudo déjà utilisé)
+  inscription(utilisateur:Utilisateur):Promise<string>{
+    return new Promise<string>( resolve => {
+      this.login(utilisateur).then( value => {
+        if(value!='pseudo') resolve(null);
+        else {
+          firebase.database().ref('Utilisateur/').push().set({
+            pseudo: utilisateur.pseudo,
+            mdp: utilisateur.mdp
+          }).then( () => {
+            this.login(utilisateur).then( value => resolve(value));
+          });
+        }
+      });
+    });
+  }
+
+  //permet de modifier le mot de passe
+  //renvoie TRUE si la modification a été effectuée, FALSE sinon (oldMDP incorrect)
+  changerMDP(utilisateur:Utilisateur, newMDP):Promise<boolean>{
+    return new Promise<boolean>( resolve => {
+
+      firebase.database().ref('Utilisateur/' + utilisateur.id).once('value', user => {
+        let userData:Utilisateur = user.val() as Utilisateur;
+        if(userData.mdp != utilisateur.mdp) resolve(false);
+        else firebase.database().ref('Utilisateur/' + utilisateur.id).set({
+          pseudo: utilisateur.pseudo,
+          mdp: newMDP
+        }).then( () => {
+          resolve(true);
+        });
+      });
+    });
   }
 }

@@ -37,8 +37,6 @@ export class TestPage {
 
       console.log("Test update");
       database.addRecette(recetteTest,true);
-      console.log("=====================================================================");
-      console.log("=====================================================================");
     },5000);
   }
 }
