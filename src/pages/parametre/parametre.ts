@@ -2,13 +2,6 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-/**
- * Generated class for the ParametrePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-parametre',
@@ -49,6 +42,6 @@ export class ParametrePage {
   }
 
   informations(){
-    //this.navCtrl.push(`CreditPage`);
+    this.navCtrl.push(`CreditPage`);
   }
 }

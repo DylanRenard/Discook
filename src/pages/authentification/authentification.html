@@ -29,8 +29,8 @@
                 </ion-item>          
             </ion-list>
 
-            <button *ngIf="pageMode=='login'" ion-button large round block (tap) = "connexion()">Se connecter</button>
-            <button *ngIf="pageMode=='inscription'" ion-button large round block (tap) = "inscription()">S'inscrire</button>
+            <button *ngIf="pageMode=='login'" ion-button large round block (click) = "connexion()">Se connecter</button>
+            <button *ngIf="pageMode=='inscription'" ion-button large round block (click) = "inscription()">S'inscrire</button>
         </ion-card-content>
     </ion-card>
       

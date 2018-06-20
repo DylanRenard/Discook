@@ -30,13 +30,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       firebase.initializeApp(this.config);
 
-      database.getIngredients().then(result => {
-        console.log(result);
+      // database.getIngredients().then(result => {
+      //   console.log(result);
 
-        storage.setItem("IngredientsList",result);
-      });
+      //   storage.setItem("IngredientsList",result);
+      // });
 
-      statusBar.styleDefault();
+      statusBar.styleBlackTranslucent();
+      statusBar.backgroundColorByHexString("#000000");
       splashScreen.hide();
     });
   }
