@@ -1,4 +1,5 @@
-import { Ingredient } from './../../providers/database/recette';
+import { DatabaseProvider } from './../../providers/database/database';
+import { Ingredient, Recette } from './../../providers/database/recette';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -8,9 +9,17 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  recetteList:Recette[];
 
-  constructor(public navCtrl: NavController, public storage: NativeStorage) {
+  constructor(public navCtrl: NavController, public storage: NativeStorage, private database:DatabaseProvider) {
+    this.recetteList = [];
+    database.getRecettes().then( value => {
+      this.recetteList = value;
+    })
+  }
 
+  onClickRecette(recette:Recette){
+    //this.navCtrl.push("PresentationBrevePage", { recette: recette });
   }
 
   changePage(page:string){

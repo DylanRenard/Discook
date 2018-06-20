@@ -78,9 +78,9 @@ export class DatabaseProvider {
             let promiseListIngredient: Promise<Ingredient>[] = [];
 
             if(recetteSearch.ingredients!=undefined){
-              recetteSearch.ingredients.forEach( ingredient => {
-                promiseListIngredient.push(this.getIngredient(ingredient));
-              });
+              for(let i = 0 ; i<recetteSearch.ingredients.length ; i++){
+                promiseListIngredient.push(this.getIngredient(recetteSearch.ingredients[i]));
+              }
             }
 
             Promise.all(promiseListIngredient).then( result => {
