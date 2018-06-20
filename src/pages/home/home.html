@@ -1,8 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Discook
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changePage('favoris')">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changePage('parametre')">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

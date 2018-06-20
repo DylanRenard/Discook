@@ -13,6 +13,18 @@ export class HomePage {
 
   }
 
+  changePage(page:string){
+    switch (page){
+      case ('parametre'):
+        this.navCtrl.push(`ParametrePage`);
+        break;
+      case ('favoris'):
+        //this.navCtrl.push(`FavorisPage`);
+        break;
+    }
+   
+  }
+
   test(){
     this.storage.getItem("IngredientsList").then( result => {
       let ingredients:Ingredient[] = [];

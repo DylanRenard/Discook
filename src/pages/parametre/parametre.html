@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Parametres</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-item >
+      <ion-label icon-start > <ion-icon ios="ios-list-box"></ion-icon> Liste des ingredients défilable</ion-label>
+      <ion-toggle [(ngModel)]="isListeDefilable"></ion-toggle>
+    </ion-item>
+  </ion-row>
+    
+  <ion-row>    
+    <ion-item >         
+      <ion-label icon-start> <ion-icon ios="ios-volume-up"></ion-icon> Activer la lecture des recettes</ion-label>
+      <ion-toggle [(ngModel)]="isLectActive" ></ion-toggle>
+    </ion-item>
+  </ion-row>
+    
+  <ion-row>
+    <button ion-button icon-left large round block (click)='supprimerFavoris()'>
+      <ion-icon name="ios-trash"></ion-icon>
+      Supprimer les favoris
+    </button>
+  </ion-row>
+
+  <ion-row>
+    <button ion-button icon-left large round block (click)='informations()'>
+      <ion-icon name="information-circle"></ion-icon>
+      Informations
+    </button>
+  </ion-row>
+</ion-content>
