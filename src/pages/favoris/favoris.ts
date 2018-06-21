@@ -10,7 +10,7 @@ import { RecetteTest } from '../../classeTest/recetteTest';
   templateUrl: 'favoris.html',
 })
 export class FavorisPage {
-  favorisList:Recette[]=[new RecetteTest, new RecetteTest, new RecetteTest];
+  favorisList:Recette[];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage:NativeStorage) {
     storage.getItem('favorisList').then( value => {
@@ -27,13 +27,10 @@ export class FavorisPage {
       case ('parametre'):
         this.navCtrl.push(`ParametrePage`);
         break;
-      case ('favoris'):
-        //this.navCtrl.push(`FavorisPage`);
-        break;
     }
   }
 
   onClickRecette(recette:Recette){
-    //this.navCtrl.push("PresentationBrevePage", { recette: recette });
+    this.navCtrl.push("PresentationBrevePage", { recette: recette });
   }
 }

@@ -6,7 +6,6 @@ import * as firebase from 'firebase';
 
 import { Ingredient, Recette, Etape } from './recette';
 import { RecetteSearch } from './recetteSearch';
-import { resolveDefinition } from '@angular/core/src/view/util';
 
 @Injectable()
 export class DatabaseProvider {

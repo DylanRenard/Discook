@@ -1,6 +1,6 @@
 //background color de l'appli
 .scroll-content{
-    background-color: color($colors,grisClairDiscook,base)
+    background-color: color($colors,grisClairDiscook,base);
 }
 
 ion-icon{
@@ -8,10 +8,21 @@ ion-icon{
     color: color($colors,orangeDiscook,base);
 }
 
+ion-icon.contentIcon{
+    background-color: transparent;
+    color: black;
+}
+
+ion-icon.favIcon{
+    background-color: transparent;
+    color: color($colors,orangeDiscook,base)
+}
+
 .button{
     background-color: color($colors,grisFonceDiscook,base);
     color: color($colors,orangeDiscook,base);
     font-size: 100%;
+    margin: auto;
 }
 
 .toolbar-background.toolbar-background-md{
@@ -41,6 +52,7 @@ img{
 
 ion-card.card.card-md{
     background-color: transparent;
+    border-radius: 10%;
 }
 
 .card-md p{

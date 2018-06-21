@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar>
+    <marquee><ion-title>{{recette.nom}}</ion-title></marquee>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changePage('favoris')">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changePage('parametre')">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img [src]="recette.image | safe:'url'"/>
+
+  <h1>
+    {{recette.nom}}
+    <ion-icon class="favIcon" *ngIf="!favoris" name="star-outline" (click)="addFav()"></ion-icon>
+    <ion-icon class="favIcon" *ngIf="favoris" name="star" (click)="addFav()"></ion-icon>
+  </h1>
+  <p>
+    {{recette.presentation}}
+  </p>
+    
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>
+            <ion-icon class="contentIcon" name="ios-list"></ion-icon> 
+            Préparation
+          </h3>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <h3> 
+            <ion-icon class="contentIcon" name="ios-timer-outline"></ion-icon>
+            Durée
+          </h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        Difficulté :
+        <br>
+        <ion-icon class="presentationIcon" *ngIf="recette.difficulte>=1" name="star"></ion-icon>
+        <ion-icon class="presentationIcon" *ngIf="recette.difficulte>=2" name="star"></ion-icon>
+        <ion-icon class="presentationIcon" *ngIf="recette.difficulte>=3" name="star"></ion-icon>
+        <ion-icon class="presentationIcon" *ngIf="recette.difficulte>=4" name="star"></ion-icon>
+        <ion-icon class="presentationIcon" *ngIf="recette.difficulte>=5" name="star"></ion-icon>
+      </ion-col>
+      <ion-col>
+        Préparation : {{recette.tempsPreparation}} min
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        Nombre de personne :
+        <br>
+        x{{recette.nombreDePersonne}} <ion-icon class="presentationIcon" name="md-restaurant" ></ion-icon>
+      </ion-col>
+      <ion-col>
+        Cuisson : {{recette.tempsCuisson}} min
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset-6>
+        Temps Total : {{tempsTotal}} min
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button round block clear icon-start round (click)="editer()">
+              <ion-icon name="md-create"></ion-icon>
+              Éditer 
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block round clear icon-start round (click)="voir()">
+            <ion-icon name="book"></ion-icon>
+            Détails
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <button ion-button round (click)="commencer()" ><ion-icon name="md-arrow-dropright-circle"></ion-icon>  Commencer la préparation</button>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-content>

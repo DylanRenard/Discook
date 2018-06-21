@@ -155,7 +155,7 @@ export class HomePage {
   }
 
   onClickRecette(recette:Recette){
-    //this.navCtrl.push("PresentationBrevePage", { recette: recette });
+    this.navCtrl.push("PresentationBrevePage", { recette: recette });
   }
 
   changePage(page:string){

@@ -24,7 +24,7 @@
                 </ion-item>
 
                 <ion-item *ngIf="pageMode=='inscription'">
-                    <ion-label floating>Confirmation du mot de passe</ion-label>
+                    <ion-label floating>Confirmation</ion-label>
                     <ion-input [(ngModel)]="confirmationMDP" type="password"></ion-input>
                 </ion-item>          
             </ion-list>
@@ -34,7 +34,7 @@
         </ion-card-content>
     </ion-card>
       
-    <button *ngIf="pageMode=='login'" ion-button large round block (tap)= "switchPageMode()">S'inscrire</button>
-    <button *ngIf="pageMode=='inscription'" ion-button large round block (tap)= "switchPageMode()">Déjà inscrit ?</button>
+    <button class="bottom" *ngIf="pageMode=='login'" ion-button large round block (tap)= "switchPageMode()">S'inscrire</button>
+    <button class="bottom" *ngIf="pageMode=='inscription'" ion-button large round block (tap)= "switchPageMode()">Déjà inscrit ?</button>
 </ion-content>
   
