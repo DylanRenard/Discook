@@ -17,8 +17,29 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let recette of recetteList">
-    <ion-grid>
+  <ion-searchbar placeholder="Search" type="text" (keyup.enter)="onSearch($event)" (ionClear)="clearSearch()"></ion-searchbar>
+
+  <ion-grid *ngIf="searchValue!=null && searchValue!=''">
+    <div *ngFor="let recette of resultlist">
+      <ion-row *ngIf="resultlist.indexOf(recette)%2 == 0">
+        <ion-col col-6>
+          <ion-card (tap)="onClickRecette(recette)">
+            <img [src]="recette.image | safe:'url'">
+            <p>{{recette.nom}}</p>
+          </ion-card>
+        </ion-col>
+        <ion-col *ngIf="resultlist.indexOf(recette)+1<resultlist.length">
+          <ion-card (tap)="onClickRecette(resultlist[resultlist.indexOf(recette)+1])">
+            <img [src]="resultlist[resultlist.indexOf(recette)+1].image | safe:'url'">
+            <p>{{ resultlist[resultlist.indexOf(recette)+1].nom }}</p>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+  <ion-grid *ngIf="searchValue==null || searchValue==''">
+    <div *ngFor="let recette of recetteList">
       <ion-row *ngIf="recetteList.indexOf(recette)%2 == 0">
         <ion-col col-6>
           <ion-card (tap)="onClickRecette(recette)">
@@ -33,8 +54,8 @@
           </ion-card>
         </ion-col>
       </ion-row>
-    </ion-grid>
-  </div>
+    </div>
+  </ion-grid>
 
   <button (click)="test()">test</button>
 </ion-content>

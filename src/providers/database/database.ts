@@ -74,21 +74,7 @@ export class DatabaseProvider {
             console.log("\tListe des etapes : " + result);
 
             recette.etapes = result;
-
-            let promiseListIngredient: Promise<Ingredient>[] = [];
-
-            if(recetteSearch.ingredients!=undefined){
-              for(let i = 0 ; i<recetteSearch.ingredients.length ; i++){
-                promiseListIngredient.push(this.getIngredient(recetteSearch.ingredients[i]));
-              }
-            }
-
-            Promise.all(promiseListIngredient).then( result => {
-              console.log("\tListe des ingredients : " + result);
-
-              recette.ingredients = result;
-              listeRecette.push(recette);
-            });
+            listeRecette.push(recette);
           });
         });
       }).then( () => {
@@ -133,6 +119,9 @@ export class DatabaseProvider {
     recette.nom = rs.nom;
     recette.presentation = rs.presentation;
     recette.image = rs.image;
+
+    recette.ingredients = rs.ingredients;
+    recette.motsCles = rs.motsCles;
     
     recette.difficulte = rs.difficulte;
     recette.nombreDePersonne = rs.nombreDePersonne;
